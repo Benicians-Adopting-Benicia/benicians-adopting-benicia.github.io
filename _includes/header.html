@@ -1,0 +1,63 @@
+<header class="bg-navy text-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="{{ '/' | relative_url }}" class="flex items-center gap-3">
+      <img src="{{ '/assets/images/logo.png' | relative_url }}"
+           alt="Benicians Adopting Benicia logo"
+           class="h-12 w-12 rounded-full">
+      <span class="font-semibold text-base whitespace-nowrap hidden sm:block">
+        Benicians Adopting Benicia
+      </span>
+    </a>
+
+    <button id="menu-toggle"
+            class="sm:hidden p-2 rounded-lg hover:bg-navy-dark transition-colors"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold">
+      <a href="{{ '/' | relative_url }}"
+         class="hover:text-blue-200 transition-colors {% if page.url == '/' %}text-blue-200{% endif %}">Home</a>
+      <a href="{{ '/about' | relative_url }}"
+         class="hover:text-blue-200 transition-colors {% if page.url contains '/about' %}text-blue-200{% endif %}">About</a>
+      <a href="{{ '/events' | relative_url }}"
+         class="hover:text-blue-200 transition-colors {% if page.url contains '/events' %}text-blue-200{% endif %}">Events</a>
+      <a href="{{ '/get-involved' | relative_url }}"
+         class="hover:text-blue-200 transition-colors {% if page.url contains '/get-involved' %}text-blue-200{% endif %}">Get Involved</a>
+      <a href="{{ '/newsletter' | relative_url }}"
+         class="hover:text-blue-200 transition-colors {% if page.url contains '/newsletter' %}text-blue-200{% endif %}">Newsletter</a>
+      <a href="https://mtyc.co/mjzo5f" target="_blank" rel="noopener"
+         class="bg-white text-navy font-bold px-5 py-2 rounded-full hover:bg-blue-50 transition-colors shadow-sm">
+        Donate
+      </a>
+    </nav>
+  </div>
+
+  <nav id="mobile-menu"
+       class="hidden sm:hidden bg-navy-dark px-4 py-4 flex flex-col gap-4 text-sm font-semibold border-t border-white border-opacity-10">
+    <a href="{{ '/' | relative_url }}" class="hover:text-blue-200 transition-colors">Home</a>
+    <a href="{{ '/about' | relative_url }}" class="hover:text-blue-200 transition-colors">About</a>
+    <a href="{{ '/events' | relative_url }}" class="hover:text-blue-200 transition-colors">Events</a>
+    <a href="{{ '/get-involved' | relative_url }}" class="hover:text-blue-200 transition-colors">Get Involved</a>
+    <a href="{{ '/newsletter' | relative_url }}" class="hover:text-blue-200 transition-colors">Newsletter</a>
+    <a href="https://mtyc.co/mjzo5f" target="_blank" rel="noopener"
+       class="bg-white text-navy font-bold px-5 py-2 rounded-full text-center hover:bg-blue-50 transition-colors">
+      Donate Today
+    </a>
+  </nav>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  </script>
+</header>

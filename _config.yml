@@ -1,0 +1,13 @@
+title: Benicians Adopting Benicia
+description: Enhancing the vibrancy and vitality of our community through visual beautification, local business support, military recognition, and tourism.
+url: "https://beniciansadoptingbenicia.com"
+baseurl: ""
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore
+  - vendor/
