@@ -22,4 +22,4 @@ Enhance the vibrancy and vitality of our community through dedicated efforts in 
 
 ## Get in Touch
 
-We'd love to hear from you. Call us at [(707) 319-6392](tel:+17073196392) or find us on [Instagram](https://www.instagram.com/beniciansadoptingbenicia), [Facebook](https://www.facebook.com/profile.php?id=61566509698418), or [YouTube](https://www.youtube.com/@BeniciansAdoptingBenicia).
+We'd love to hear from you. Call us at [(707) 373-4329](tel:+17073734329) or find us on [Instagram](https://www.instagram.com/beniciansadoptingbenicia), [Facebook](https://www.facebook.com/profile.php?id=61566509698418), or [YouTube](https://www.youtube.com/@BeniciansAdoptingBenicia).

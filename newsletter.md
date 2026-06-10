@@ -17,4 +17,4 @@ Stay up to date with everything Benicians Adopting Benicia is working on. Our ne
 
 ---
 
-To make sure you never miss an issue, follow us on social media or call us at [(707) 319-6392](tel:+17073196392) to be added to our mailing list.
+To make sure you never miss an issue, follow us on social media or call us at [(707) 373-4329](tel:+17073734329) to be added to our mailing list.

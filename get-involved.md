@@ -32,6 +32,6 @@ Honor a current or former military member by sponsoring a banner to be displayed
 
 We're always looking for enthusiastic community members to help with events and projects. Reach out to get involved:
 
-- **Phone:** [(707) 319-6392](tel:+17073196392)
+- **Phone:** [(707) 373-4329](tel:+17073734329)
 - **Instagram:** [@beniciansadoptingbenicia](https://www.instagram.com/beniciansadoptingbenicia)
 - **Facebook:** [Benicians Adopting Benicia](https://www.facebook.com/profile.php?id=61566509698418)
