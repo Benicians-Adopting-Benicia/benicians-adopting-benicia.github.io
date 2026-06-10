@@ -11,7 +11,7 @@ There are many ways to support our community — whether you want to volunteer y
 Your donation helps fund beautification projects, community events, and our Military Banner Program. Every contribution makes a difference.
 
 <div class="not-prose mt-4">
-<a href="https://mtyc.co/mjzo5f" target="_blank" rel="noopener"
+<a href="{{ site.donate_url }}" target="_blank" rel="noopener"
    class="inline-block bg-navy text-white font-bold px-8 py-3 rounded-full hover:bg-navy-dark transition-colors">
   Donate Today
 </a>
@@ -32,6 +32,6 @@ Honor a current or former military member by sponsoring a banner to be displayed
 
 We're always looking for enthusiastic community members to help with events and projects. Reach out to get involved:
 
-- **Phone:** [(707) 373-4329](tel:+17073734329)
-- **Instagram:** [@beniciansadoptingbenicia](https://www.instagram.com/beniciansadoptingbenicia)
-- **Facebook:** [Benicians Adopting Benicia](https://www.facebook.com/profile.php?id=61566509698418)
+- **Phone:** [{{ site.phone_display }}]({{ site.phone_tel }})
+- **Instagram:** [@beniciansadoptingbenicia]({{ site.instagram_url }})
+- **Facebook:** [Benicians Adopting Benicia]({{ site.facebook_url }})

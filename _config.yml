@@ -3,6 +3,15 @@ description: Enhancing the vibrancy and vitality of our community through visual
 url: "https://benicians-adopting-benicia.github.io"
 baseurl: "/website"
 
+# Contact & social — edit these to update everywhere on the site
+phone_display: "(707) 373-4329"
+phone_tel: "+17073734329"
+instagram_url: "https://www.instagram.com/beniciansadoptingbenicia"
+facebook_url: "https://www.facebook.com/profile.php?id=61566509698418"
+facebook_events_url: "https://www.facebook.com/profile.php?id=61566509698418&sk=events"
+youtube_url: "https://www.youtube.com/@BeniciansAdoptingBenicia"
+donate_url: "https://mtyc.co/mjzo5f"
+
 plugins:
   - jekyll-seo-tag
 

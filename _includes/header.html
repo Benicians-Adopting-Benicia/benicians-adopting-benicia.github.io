@@ -31,7 +31,7 @@
          class="hover:text-blue-200 transition-colors {% if page.url contains '/get-involved' %}text-blue-200{% endif %}">Get Involved</a>
       <a href="{{ '/newsletter' | relative_url }}"
          class="hover:text-blue-200 transition-colors {% if page.url contains '/newsletter' %}text-blue-200{% endif %}">Newsletter</a>
-      <a href="https://mtyc.co/mjzo5f" target="_blank" rel="noopener"
+      <a href="{{ site.donate_url }}" target="_blank" rel="noopener"
          class="bg-white text-navy font-bold px-5 py-2 rounded-full hover:bg-blue-50 transition-colors shadow-sm">
         Donate
       </a>
@@ -45,7 +45,7 @@
     <a href="{{ '/events' | relative_url }}" class="hover:text-blue-200 transition-colors">Events</a>
     <a href="{{ '/get-involved' | relative_url }}" class="hover:text-blue-200 transition-colors">Get Involved</a>
     <a href="{{ '/newsletter' | relative_url }}" class="hover:text-blue-200 transition-colors">Newsletter</a>
-    <a href="https://mtyc.co/mjzo5f" target="_blank" rel="noopener"
+    <a href="{{ site.donate_url }}" target="_blank" rel="noopener"
        class="bg-white text-navy font-bold px-5 py-2 rounded-full text-center hover:bg-blue-50 transition-colors">
       Donate Today
     </a>
