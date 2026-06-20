@@ -1,63 +1,41 @@
-<header class="bg-navy text-white shadow-md sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href="{{ '/' | relative_url }}" class="flex items-center gap-3">
-      <img src="{{ '/assets/images/logo.png' | relative_url }}"
-           alt="Benicians Adopting Benicia logo"
-           class="h-12 w-12 rounded-full">
-      <span class="font-semibold text-base whitespace-nowrap hidden sm:block">
-        Benicians Adopting Benicia
-      </span>
-    </a>
-
-    <button id="menu-toggle"
-            class="sm:hidden p-2 rounded-lg hover:bg-navy-dark transition-colors"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mobile-menu">
-      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-
-    <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold">
-      <a href="{{ '/' | relative_url }}"
-         class="hover:text-blue-200 transition-colors {% if page.url == '/' %}text-blue-200{% endif %}">Home</a>
-      <a href="{{ '/about' | relative_url }}"
-         class="hover:text-blue-200 transition-colors {% if page.url contains '/about' %}text-blue-200{% endif %}">About</a>
-      <a href="{{ '/events' | relative_url }}"
-         class="hover:text-blue-200 transition-colors {% if page.url contains '/events' %}text-blue-200{% endif %}">Events</a>
-      <a href="{{ '/get-involved' | relative_url }}"
-         class="hover:text-blue-200 transition-colors {% if page.url contains '/get-involved' %}text-blue-200{% endif %}">Get Involved</a>
-      <a href="{{ '/newsletter' | relative_url }}"
-         class="hover:text-blue-200 transition-colors {% if page.url contains '/newsletter' %}text-blue-200{% endif %}">Newsletter</a>
-      <a href="{{ site.donate_url }}" target="_blank" rel="noopener"
-         class="bg-white text-navy font-bold px-5 py-2 rounded-full hover:bg-blue-50 transition-colors shadow-sm">
-        Donate
-      </a>
-    </nav>
+<header style="position:sticky; top:0; z-index:50; background:#fbf6ec; box-shadow:0 1px 0 #cdbf9f;">
+  <!-- utility bar -->
+  <div data-r="util" style="background:#1e2a4f; color:#d9d3c5; font-size:11.5px; padding:8px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+    <span style="text-transform:uppercase; letter-spacing:0.16em;">Benicia, California &middot; Founded 1847</span>
+    <span style="letter-spacing:0.04em;">
+      <a href="{{ site.phone_tel }}" style="color:#d9d3c5; text-decoration:none;">{{ site.phone_display }}</a>
+      &nbsp;&middot;&nbsp;
+      <a href="{{ site.instagram_url }}" target="_blank" rel="noopener" style="color:#d9d3c5; text-decoration:none;">Instagram</a>
+      &nbsp;&middot;&nbsp;
+      <a href="{{ site.facebook_url }}" target="_blank" rel="noopener" style="color:#d9d3c5; text-decoration:none;">Facebook</a>
+      &nbsp;&middot;&nbsp;
+      <a href="{{ site.youtube_url }}" target="_blank" rel="noopener" style="color:#d9d3c5; text-decoration:none;">YouTube</a>
+    </span>
   </div>
 
-  <nav id="mobile-menu"
-       class="hidden sm:hidden bg-navy-dark px-4 py-4 flex flex-col gap-4 text-sm font-semibold border-t border-white border-opacity-10">
-    <a href="{{ '/' | relative_url }}" class="hover:text-blue-200 transition-colors">Home</a>
-    <a href="{{ '/about' | relative_url }}" class="hover:text-blue-200 transition-colors">About</a>
-    <a href="{{ '/events' | relative_url }}" class="hover:text-blue-200 transition-colors">Events</a>
-    <a href="{{ '/get-involved' | relative_url }}" class="hover:text-blue-200 transition-colors">Get Involved</a>
-    <a href="{{ '/newsletter' | relative_url }}" class="hover:text-blue-200 transition-colors">Newsletter</a>
-    <a href="{{ site.donate_url }}" target="_blank" rel="noopener"
-       class="bg-white text-navy font-bold px-5 py-2 rounded-full text-center hover:bg-blue-50 transition-colors">
-      Donate Today
+  <!-- masthead -->
+  <div style="max-width:1180px; margin:0 auto; padding:22px 40px 0; text-align:center;">
+    <a href="{{ '/' | relative_url }}" style="display:block;">
+      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Benicians Adopting Benicia seal" style="width:66px; height:66px; border-radius:50%; margin:0 auto 14px; display:block; box-shadow:0 6px 18px -8px rgba(30,42,79,0.5);">
     </a>
-  </nav>
+    <div style="display:flex; align-items:center; justify-content:center; gap:18px;">
+      <span style="flex:1; height:1px; background:#cdbf9f; max-width:200px;"></span>
+      <span style="font-size:10.5px; font-weight:700; letter-spacing:0.32em; text-transform:uppercase; color:#8c3a2b; white-space:nowrap;">Est. by the Community</span>
+      <span style="flex:1; height:1px; background:#cdbf9f; max-width:200px;"></span>
+    </div>
+    <a href="{{ '/' | relative_url }}" style="text-decoration:none; color:inherit;">
+      <h1 data-r="wordmark" style="font-family:'Newsreader',serif; font-size:40px; font-weight:600; letter-spacing:-0.01em; margin:12px 0 5px;">Benicians Adopting Benicia</h1>
+    </a>
+    <div data-r="subtitle" style="font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#7d766a;">A Community Beautification &amp; Civic Society</div>
 
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    toggle.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-    });
-  </script>
+    <!-- nav -->
+    <nav data-r="nav" style="margin-top:18px; padding:13px 0; border-top:2px solid #1e2a4f; border-bottom:1px solid #cdbf9f; display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap; font-size:12.5px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;">
+      <a href="{{ '/' | relative_url }}" style="text-decoration:none; color:{% if page.url == '/' %}#8c3a2b{% else %}#3a3833{% endif %};">Home</a>
+      <a href="{{ '/about' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/about' %}#8c3a2b{% else %}#3a3833{% endif %};">About</a>
+      <a href="{{ '/events' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/events' %}#8c3a2b{% else %}#3a3833{% endif %};">Events</a>
+      <a href="{{ '/get-involved' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/get-involved' %}#8c3a2b{% else %}#3a3833{% endif %};">Get Involved</a>
+      <a href="{{ '/newsletter' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/newsletter' %}#8c3a2b{% else %}#3a3833{% endif %};">Newsletter</a>
+      <a href="{{ site.donate_url }}" target="_blank" rel="noopener" style="background:#8c3a2b; color:#fbf6ec; padding:8px 18px; border-radius:4px; text-decoration:none; letter-spacing:0.08em;">Donate</a>
+    </nav>
+  </div>
 </header>
