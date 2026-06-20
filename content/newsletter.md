@@ -1,5 +1,6 @@
 ---
 layout: newsletter
+permalink: /newsletter/
 title: Newsletter
 description: Read the latest newsletters from Benicians Adopting Benicia.
 eyebrow: Stay in the Loop

@@ -1,5 +1,6 @@
 ---
 layout: about
+permalink: /about/
 title: About Us
 description: Learn about Benicians Adopting Benicia and our mission to enhance community vibrancy in Benicia, CA.
 eyebrow: Who We Are

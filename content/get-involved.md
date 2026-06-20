@@ -1,5 +1,6 @@
 ---
 layout: get-involved
+permalink: /get-involved/
 title: Get Involved
 description: Learn how to volunteer, donate, and support Benicians Adopting Benicia.
 eyebrow: Lend a Hand
