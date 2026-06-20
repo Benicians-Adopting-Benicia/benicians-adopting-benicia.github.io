@@ -11,6 +11,8 @@ facebook_url: "https://www.facebook.com/profile.php?id=61566509698418"
 facebook_events_url: "https://www.facebook.com/profile.php?id=61566509698418&sk=events"
 youtube_url: "https://www.youtube.com/@BeniciansAdoptingBenicia"
 donate_url: "https://www.livesolanogivesolano.org/give/Benicians-Adopting-Benicia-Fund"
+newsletter_url: "https://eddy.pro/pdf/5010486"
+banner_form_url: "https://eddy.pro/pdf/5071076"
 
 plugins:
   - jekyll-seo-tag
