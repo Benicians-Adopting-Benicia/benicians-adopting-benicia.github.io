@@ -39,6 +39,11 @@ img { max-width: 100%; }
 .page-prose strong { color: #2a3354; }
 .page-prose hr { border: none; border-top: 1px solid #cdbf9f; margin: 32px 0; }
 
+/* ---------- Nav links ---------- */
+.nav-link { text-decoration: none; color: #3a3833; }
+.nav-link[aria-current="page"] { color: #8c3a2b; }
+.nav-donate { background: #8c3a2b; color: #fbf6ec; padding: 8px 18px; border-radius: 4px; text-decoration: none; letter-spacing: 0.08em; }
+
 /* ---------- About page mission drop cap ---------- */
 .mission-text p { margin: 0; }
 .mission-text p:first-of-type::first-letter {

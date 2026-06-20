@@ -32,10 +32,20 @@
 
 <!-- nav (sticky independently of the masthead) -->
 <nav data-r="nav" style="position:sticky; top:0; z-index:50; background:#fbf6ec; box-shadow:0 1px 0 #cdbf9f; padding:13px 0; border-top:2px solid #1e2a4f; display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap; font-size:12.5px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;">
-  <a href="{{ '/' | relative_url }}" style="text-decoration:none; color:{% if page.url == '/' %}#8c3a2b{% else %}#3a3833{% endif %};">Home</a>
-  <a href="{{ '/about' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/about' %}#8c3a2b{% else %}#3a3833{% endif %};">About</a>
-  <a href="{{ '/events' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/events' %}#8c3a2b{% else %}#3a3833{% endif %};">Events</a>
-  <a href="{{ '/get-involved' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/get-involved' %}#8c3a2b{% else %}#3a3833{% endif %};">Get Involved</a>
-  <a href="{{ '/newsletter' | relative_url }}" style="text-decoration:none; color:{% if page.url contains '/newsletter' %}#8c3a2b{% else %}#3a3833{% endif %};">Newsletter</a>
-  <a href="{{ site.donate_url }}" target="_blank" rel="noopener" style="background:#8c3a2b; color:#fbf6ec; padding:8px 18px; border-radius:4px; text-decoration:none; letter-spacing:0.08em;">Donate</a>
+  <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+  <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
+  <a href="{{ '/events' | relative_url }}" class="nav-link">Events</a>
+  <a href="{{ '/get-involved' | relative_url }}" class="nav-link">Get Involved</a>
+  <a href="{{ '/newsletter' | relative_url }}" class="nav-link">Newsletter</a>
+  <a href="{{ site.donate_url }}" target="_blank" rel="noopener" class="nav-donate">Donate</a>
 </nav>
+<script>
+  const path = window.location.pathname;
+  const root = '{{ "/" | relative_url }}';
+  document.querySelectorAll('.nav-link').forEach(a => {
+    const href = a.getAttribute('href');
+    if (path === href || path === href + '/' || (href !== root && path.startsWith(href))) {
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+</script>
