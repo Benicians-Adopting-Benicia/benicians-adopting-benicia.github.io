@@ -1,0 +1,67 @@
+---
+import Default from './Default.astro';
+import { site } from '../config';
+
+interface Section {
+  title: string;
+  body: string;
+  cta: string;
+}
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    eyebrow: string;
+    subtitle: string;
+    donate: Section;
+    banner: Section;
+    volunteer: { title: string; body: string };
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+<Default title={frontmatter.title} description={frontmatter.description}>
+
+  <section class="page-header">
+    <div class="eyebrow">{frontmatter.eyebrow}</div>
+    <h1 data-r="t-page">{frontmatter.title}</h1>
+    <p class="lead">{frontmatter.subtitle}</p>
+  </section>
+
+  <section style="max-width:980px; margin:0 auto; padding:46px 40px 64px; display:flex; flex-direction:column; gap:0;">
+    <!-- 01 Donate -->
+    <div data-r="ledger" style="display:grid; grid-template-columns:96px 1fr auto; gap:24px; align-items:center; padding:32px 0; border-top:2px solid #1e2a4f;">
+      <div data-r="ledger-num">01</div>
+      <div>
+        <h2 class="ledger-h2">{frontmatter.donate.title}</h2>
+        <p class="ledger-p">{frontmatter.donate.body}</p>
+      </div>
+      <a href={site.donate_url} target="_blank" rel="noopener" class="btn btn-red">{frontmatter.donate.cta}</a>
+    </div>
+    <!-- 02 Banner -->
+    <div data-r="ledger" style="display:grid; grid-template-columns:96px 1fr auto; gap:24px; align-items:center; padding:32px 0; border-top:1px solid #cdbf9f;">
+      <div data-r="ledger-num">02</div>
+      <div>
+        <h2 class="ledger-h2">{frontmatter.banner.title}</h2>
+        <p class="ledger-p">{frontmatter.banner.body}</p>
+      </div>
+      <a href={site.banner_form_url} target="_blank" rel="noopener" class="btn btn-navy">{frontmatter.banner.cta}</a>
+    </div>
+    <!-- 03 Volunteer -->
+    <div data-r="ledger" style="display:grid; grid-template-columns:96px 1fr; gap:24px; padding:32px 0; border-top:1px solid #cdbf9f; border-bottom:2px solid #1e2a4f;">
+      <div data-r="ledger-num">03</div>
+      <div>
+        <h2 class="ledger-h2">{frontmatter.volunteer.title}</h2>
+        <p class="ledger-p" style="margin-bottom:18px;">{frontmatter.volunteer.body}</p>
+        <div class="btn-group">
+          <a href={site.phone_tel} class="btn btn-outline">Call {site.phone_display}</a>
+          <a href={site.instagram_url} target="_blank" rel="noopener" class="btn btn-outline">@beniciansadoptingbenicia</a>
+          <a href={site.facebook_url} target="_blank" rel="noopener" class="btn btn-outline">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Default>

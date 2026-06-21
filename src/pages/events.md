@@ -1,6 +1,5 @@
 ---
-layout: events
-permalink: /events/
+layout: ../layouts/Events.astro
 title: Events
 description: Upcoming community events from Benicians Adopting Benicia in Benicia, CA.
 eyebrow: Gather With Us

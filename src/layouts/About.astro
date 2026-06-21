@@ -1,0 +1,71 @@
+---
+import Default from './Default.astro';
+import { site } from '../config';
+
+interface Pillar {
+  num: string;
+  title: string;
+  body: string;
+}
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    eyebrow: string;
+    subtitle: string;
+    hero_image: string;
+    hero_alt: string;
+    pillars: Pillar[];
+  };
+}
+
+const { frontmatter } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<Default title={frontmatter.title} description={frontmatter.description}>
+
+  <section class="page-header">
+    <div class="eyebrow">{frontmatter.eyebrow}</div>
+    <h1 data-r="t-page">{frontmatter.title}</h1>
+    <p class="lead">{frontmatter.subtitle}</p>
+  </section>
+
+  <section style="max-width:1100px; margin:0 auto; padding:40px 40px 8px;">
+    <div class="img-frame">
+      <img src={`${base}${frontmatter.hero_image.replace(/^\//, '')}`} alt={frontmatter.hero_alt} style="height:380px; object-fit:cover;">
+    </div>
+  </section>
+
+  <section style="max-width:760px; margin:0 auto; padding:48px 40px 8px;">
+    <div class="rule-heading"><h2>Our Mission</h2></div>
+    <div class="mission-text" style="font-family:'Newsreader',serif; font-size:23px; line-height:1.5; color:#2a3354;">
+      <slot />
+    </div>
+  </section>
+
+  <section style="max-width:1100px; margin:0 auto; padding:50px 40px 8px;">
+    <div class="section-divider"><h2>What We Do</h2></div>
+    <div data-r="g2" class="pillar-grid">
+      {frontmatter.pillars.map(pillar => (
+        <div>
+          <div style="font-family:'Newsreader',serif; font-size:26px; color:#b08534; font-weight:500;">{pillar.num}</div>
+          <h3 style="font-family:'Newsreader',serif; font-size:24px; font-weight:600; margin:4px 0 10px;">{pillar.title}</h3>
+          <p style="font-size:14.5px; line-height:1.65; color:#5c574e; margin:0;">{pillar.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="max-width:1100px; margin:40px auto 0; padding:0 40px 60px;">
+    <div data-r="pad" class="cta-banner">
+      <h2>Get in Touch</h2>
+      <p>We'd love to hear from you — whether you want to volunteer, partner, or just say hello.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href={site.phone_tel} class="btn btn-gold">Call {site.phone_display}</a>
+        <a href={`${base}get-involved`} class="btn btn-ghost-cream">Get Involved &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+</Default>

@@ -1,0 +1,59 @@
+---
+import { site } from '../config';
+const base = import.meta.env.BASE_URL;
+---
+
+<header style="background:#fbf6ec;">
+  <!-- utility bar -->
+  <div data-r="util" style="background:#1e2a4f; color:#d9d3c5; font-size:11.5px; padding:8px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+    <span style="text-transform:uppercase; letter-spacing:0.16em;">Benicia, California &middot; Founded 1847</span>
+    <span style="letter-spacing:0.04em;">
+      <a href={site.phone_tel} style="color:#d9d3c5; text-decoration:none;">{site.phone_display}</a>
+      &nbsp;&middot;&nbsp;
+      <a href={site.instagram_url} target="_blank" rel="noopener" style="color:#d9d3c5; text-decoration:none;">Instagram</a>
+      &nbsp;&middot;&nbsp;
+      <a href={site.facebook_url} target="_blank" rel="noopener" style="color:#d9d3c5; text-decoration:none;">Facebook</a>
+      &nbsp;&middot;&nbsp;
+      <a href={site.youtube_url} target="_blank" rel="noopener" style="color:#d9d3c5; text-decoration:none;">YouTube</a>
+    </span>
+  </div>
+
+  <!-- masthead -->
+  <div style="max-width:1180px; margin:0 auto; padding:22px 40px 0; text-align:center;">
+    <a href={base} style="display:block;">
+      <img src={`${base}assets/images/logo.png`} alt="Benicians Adopting Benicia seal" style="width:66px; height:66px; border-radius:50%; margin:0 auto 14px; display:block; box-shadow:0 6px 18px -8px rgba(30,42,79,0.5);">
+    </a>
+    <div style="display:flex; align-items:center; justify-content:center; gap:18px;">
+      <span style="flex:1; height:1px; background:#cdbf9f; max-width:200px;"></span>
+      <span style="font-size:10.5px; font-weight:700; letter-spacing:0.32em; text-transform:uppercase; color:#8c3a2b; white-space:nowrap;">Est. by the Community</span>
+      <span style="flex:1; height:1px; background:#cdbf9f; max-width:200px;"></span>
+    </div>
+    <a href={base} style="text-decoration:none; color:inherit;">
+      <h1 data-r="wordmark">{site.title}</h1>
+    </a>
+    <div data-r="subtitle" style="margin:1em 0;">A Community Beautification &amp; Civic Society</div>
+  </div>
+</header>
+
+<!-- nav (sticky independently of the masthead) -->
+<nav data-r="nav" data-base={base} style="position:sticky; top:0; z-index:50; background:#fbf6ec; box-shadow:0 1px 0 #cdbf9f; padding:13px 0; border-top:2px solid #1e2a4f; display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap; font-size:12.5px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;">
+  <a href={base} class="nav-link">Home</a>
+  <a href={`${base}about`} class="nav-link">About</a>
+  <a href={`${base}events`} class="nav-link">Events</a>
+  <a href={`${base}get-involved`} class="nav-link">Get Involved</a>
+  <a href={`${base}newsletter`} class="nav-link">Newsletter</a>
+  <a href={site.donate_url} target="_blank" rel="noopener" class="nav-donate">Donate</a>
+</nav>
+<script is:inline>
+  const nav = document.querySelector('nav[data-base]');
+  const base = nav.dataset.base;
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-link').forEach(a => {
+    const href = a.getAttribute('href');
+    const isHome = href === base || href === base.replace(/\/$/, '');
+    const active = isHome
+      ? (path === href || path === href + '/')
+      : (path === href || path === href + '/' || path.startsWith(href + '/'));
+    if (active) a.setAttribute('aria-current', 'page');
+  });
+</script>
