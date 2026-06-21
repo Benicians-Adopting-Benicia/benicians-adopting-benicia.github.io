@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import Newsletter from '../layouts/Newsletter.astro';
+
+const entry = await getEntry('pages', 'newsletter');
+const { Content } = await entry.render();
+---
+<Newsletter frontmatter={entry.data}><Content /></Newsletter>

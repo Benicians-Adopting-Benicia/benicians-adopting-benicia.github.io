@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import About from '../layouts/About.astro';
+
+const entry = await getEntry('pages', 'about');
+const { Content } = await entry.render();
+---
+<About frontmatter={entry.data}><Content /></About>

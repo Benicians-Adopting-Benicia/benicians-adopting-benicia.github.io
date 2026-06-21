@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import GetInvolved from '../layouts/GetInvolved.astro';
+
+const entry = await getEntry('pages', 'get-involved');
+const { Content } = await entry.render();
+---
+<GetInvolved frontmatter={entry.data}><Content /></GetInvolved>

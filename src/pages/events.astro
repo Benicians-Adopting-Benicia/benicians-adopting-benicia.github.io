@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import Events from '../layouts/Events.astro';
+
+const entry = await getEntry('pages', 'events');
+const { Content } = await entry.render();
+---
+<Events frontmatter={entry.data}><Content /></Events>
