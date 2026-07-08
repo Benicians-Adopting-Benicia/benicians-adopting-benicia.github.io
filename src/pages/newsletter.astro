@@ -1,9 +1,10 @@
 ---
 import { getEntry, render } from 'astro:content';
-import Newsletter from '../layouts/Newsletter.astro';
+import Newsletter, { type NewsletterFrontmatter } from '../layouts/Newsletter.astro';
 
 const entry = await getEntry('pages', 'newsletter');
 if (!entry) throw new Error('Missing content entry: pages/newsletter');
 const { Content } = await render(entry);
+const frontmatter = entry.data as NewsletterFrontmatter;
 ---
-<Newsletter frontmatter={entry.data}><Content /></Newsletter>
+<Newsletter frontmatter={frontmatter}><Content /></Newsletter>

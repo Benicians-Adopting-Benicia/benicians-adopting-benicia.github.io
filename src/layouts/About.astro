@@ -8,16 +8,18 @@ interface Pillar {
   body: string;
 }
 
+export interface AboutFrontmatter {
+  title: string;
+  description?: string;
+  eyebrow: string;
+  subtitle: string;
+  hero_image: string;
+  hero_alt: string;
+  pillars: Pillar[];
+}
+
 interface Props {
-  frontmatter: {
-    title: string;
-    description?: string;
-    eyebrow: string;
-    subtitle: string;
-    hero_image: string;
-    hero_alt: string;
-    pillars: Pillar[];
-  };
+  frontmatter: AboutFrontmatter;
 }
 
 const { frontmatter } = Astro.props;

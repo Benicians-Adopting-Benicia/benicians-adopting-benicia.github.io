@@ -2,15 +2,17 @@
 import Default from './Default.astro';
 import { site } from '../config';
 
+export interface NewsletterFrontmatter {
+  title: string;
+  description?: string;
+  eyebrow: string;
+  subtitle: string;
+  issue_label: string;
+  issue_title: string;
+}
+
 interface Props {
-  frontmatter: {
-    title: string;
-    description?: string;
-    eyebrow: string;
-    subtitle: string;
-    issue_label: string;
-    issue_title: string;
-  };
+  frontmatter: NewsletterFrontmatter;
 }
 
 const { frontmatter } = Astro.props;

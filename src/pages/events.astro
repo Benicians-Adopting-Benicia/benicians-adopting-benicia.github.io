@@ -1,9 +1,10 @@
 ---
 import { getEntry, render } from 'astro:content';
-import Events from '../layouts/Events.astro';
+import Events, { type EventsFrontmatter } from '../layouts/Events.astro';
 
 const entry = await getEntry('pages', 'events');
 if (!entry) throw new Error('Missing content entry: pages/events');
 const { Content } = await render(entry);
+const frontmatter = entry.data as EventsFrontmatter;
 ---
-<Events frontmatter={entry.data}><Content /></Events>
+<Events frontmatter={frontmatter}><Content /></Events>

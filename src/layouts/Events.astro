@@ -2,13 +2,15 @@
 import Default from './Default.astro';
 import { site } from '../config';
 
+export interface EventsFrontmatter {
+  title: string;
+  description?: string;
+  eyebrow: string;
+  intro: string;
+}
+
 interface Props {
-  frontmatter: {
-    title: string;
-    description?: string;
-    eyebrow: string;
-    intro: string;
-  };
+  frontmatter: EventsFrontmatter;
 }
 
 const { frontmatter } = Astro.props;

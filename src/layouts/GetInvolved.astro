@@ -8,16 +8,18 @@ interface Section {
   cta: string;
 }
 
+export interface GetInvolvedFrontmatter {
+  title: string;
+  description?: string;
+  eyebrow: string;
+  subtitle: string;
+  donate: Section;
+  banner: Section;
+  volunteer: { title: string; body: string };
+}
+
 interface Props {
-  frontmatter: {
-    title: string;
-    description?: string;
-    eyebrow: string;
-    subtitle: string;
-    donate: Section;
-    banner: Section;
-    volunteer: { title: string; body: string };
-  };
+  frontmatter: GetInvolvedFrontmatter;
 }
 
 const { frontmatter } = Astro.props;
