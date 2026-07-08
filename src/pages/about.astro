@@ -1,8 +1,9 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 import About from '../layouts/About.astro';
 
 const entry = await getEntry('pages', 'about');
-const { Content } = await entry.render();
+if (!entry) throw new Error('Missing content entry: pages/about');
+const { Content } = await render(entry);
 ---
 <About frontmatter={entry.data}><Content /></About>

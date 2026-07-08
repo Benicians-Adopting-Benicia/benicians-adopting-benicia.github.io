@@ -1,8 +1,9 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 import GetInvolved from '../layouts/GetInvolved.astro';
 
 const entry = await getEntry('pages', 'get-involved');
-const { Content } = await entry.render();
+if (!entry) throw new Error('Missing content entry: pages/get-involved');
+const { Content } = await render(entry);
 ---
 <GetInvolved frontmatter={entry.data}><Content /></GetInvolved>
