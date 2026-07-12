@@ -33,37 +33,37 @@ const base = import.meta.env.BASE_URL;
     <p class="lead">{frontmatter.subtitle}</p>
   </section>
 
-  <section style="max-width:1100px; margin:0 auto; padding:40px 40px 8px;">
+  <section class="container container-pad container-1100 about-hero-section">
     <div class="img-frame">
-      <img src={`${base}${frontmatter.hero_image.replace(/^\//, '')}`} alt={frontmatter.hero_alt} style="height:380px; object-fit:cover;">
+      <img src={`${base}${frontmatter.hero_image.replace(/^\//, '')}`} alt={frontmatter.hero_alt}>
     </div>
   </section>
 
-  <section style="max-width:760px; margin:0 auto; padding:48px 40px 8px;">
+  <section class="container container-pad container-780 about-mission-section">
     <div class="rule-heading"><h2>Our Mission</h2></div>
-    <div class="mission-text" style="font-family:'Newsreader',serif; font-size:23px; line-height:1.5; color:#2a3354;">
+    <div class="mission-text">
       <Content />
     </div>
   </section>
 
-  <section style="max-width:1100px; margin:50px auto 8px;">
+  <section class="container container-1100 about-pillars-section">
     <div class="section-divider"><h2>What We Do</h2></div>
-    <div data-r="g2" class="pillar-grid">
+    <div class="pillar-grid">
       {frontmatter.pillars.map(pillar => (
         <div>
-          <div style="font-family:'Newsreader',serif; font-size:26px; color:#b08534; font-weight:500;">{pillar.num}</div>
-          <h3 style="font-family:'Newsreader',serif; font-size:24px; font-weight:600; margin:4px 0 10px;">{pillar.title}</h3>
-          <p style="font-size:14.5px; line-height:1.65; color:#5c574e; margin:0;">{pillar.body}</p>
+          <div>{pillar.num}</div>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.body}</p>
         </div>
       ))}
     </div>
   </section>
 
-  <section style="max-width:1100px; margin:40px auto 0; padding:0 40px 60px;">
-    <div data-r="pad" class="cta-banner">
+  <section class="container container-pad container-1100 about-cta-section">
+    <div class="cta-banner">
       <h2>Get in Touch</h2>
       <p>We'd love to hear from you — whether you want to volunteer, partner, or just say hello.</p>
-      <div class="btn-group" style="justify-content:center;">
+      <div class="btn-group">
         <a href={site.phone_tel} class="btn btn-gold">Call {site.phone_display}</a>
         <a href={`${base}get-involved/`} class="btn btn-ghost-cream">Get Involved &rsaquo;</a>
       </div>

@@ -28,9 +28,9 @@ const base = import.meta.env.BASE_URL;
   {lightbox && <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />}
 </head>
 <body>
-  <div data-site="bab" style="min-height:100vh; display:flex; flex-direction:column;">
+  <div data-site="bab">
     <Header />
-    <main style="flex:1;">
+    <main>
       <slot />
     </main>
     <Footer />
