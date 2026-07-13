@@ -3,7 +3,7 @@ title: About Us
 description: Learn about Benicians Adopting Benicia and our mission to enhance community vibrancy in Benicia, CA.
 eyebrow: Who We Are
 subtitle: A community organization dedicated to enhancing the vibrancy and vitality of Benicia, California — working across four key areas to make our city a better place to live, work, and visit.
-hero_image: /assets/images/gallery/photo-11.png
+hero_image: ../src/assets/images/gallery/photo-11.png
 hero_alt: Volunteers at a Benicia field cleanup
 pillars:
   - num: "01"

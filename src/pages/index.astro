@@ -1,11 +1,22 @@
 ---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Default from '../layouts/Default.astro';
 import { site } from '../config';
+import heroPhoto from '../assets/images/gallery/photo-14.png';
+import ctaPhoto from '../assets/images/gallery/photo-07.png';
 
 const base = import.meta.env.BASE_URL;
-const galleryImages = Object.keys(
-  import.meta.glob('/public/assets/images/gallery/*.png')
-).map(p => p.slice('/public'.length));
+
+const galleryImageModules = Object.values(
+  import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/gallery/*.png', { eager: true })
+).map(m => m.default);
+const galleryImages = await Promise.all(
+  galleryImageModules.map(async (thumb) => ({
+    thumb,
+    full: await getImage({ src: thumb, format: 'webp', width: 1000 }),
+  }))
+);
 ---
 <Default title="Home" description={site.description} lightbox={true}>
 
@@ -22,7 +33,7 @@ const galleryImages = Object.keys(
   </div>
   <div class="img-frame">
     <div class="hero-frame-inner">
-      <img src={`${base}assets/images/gallery/photo-14.png`} alt="Volunteers gathered under the BAB tent">
+      <Image src={heroPhoto} alt="Volunteers gathered under the BAB tent" width={700} format="webp" loading="eager" />
     </div>
     <div class="hero-caption">Citywide Cleanup Day &middot; Volunteers gather at dawn</div>
   </div>
@@ -84,9 +95,9 @@ const galleryImages = Object.keys(
     <p class="gallery-intro">Scenes from cleanups, banner days, and neighbors at work.</p>
   </div>
   <div data-r="g4 g-gallery">
-    {galleryImages.map(img => (
-      <a href={`${base}${img.slice(1)}`} class="glightbox gallery-item" data-gallery="community" data-description="Benicians Adopting Benicia">
-        <img src={`${base}${img.slice(1)}`} alt="Benicians Adopting Benicia community photo">
+    {galleryImages.map(({ thumb, full }) => (
+      <a href={full.src} class="glightbox gallery-item" data-gallery="community" data-description="Benicians Adopting Benicia">
+        <Image src={thumb} alt="Benicians Adopting Benicia community photo" width={500} format="webp" />
       </a>
     ))}
   </div>
@@ -102,7 +113,7 @@ const galleryImages = Object.keys(
       <a href={`${base}events/`} class="btn btn-navy">View All Events</a>
     </div>
     <div class="events-cta-img-wrap">
-      <img data-r="cta-img" src={`${base}assets/images/gallery/photo-07.png`} alt="">
+      <Image data-r="cta-img" src={ctaPhoto} alt="" width={700} format="webp" />
     </div>
   </div>
 </section>
