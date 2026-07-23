@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://benicians-adopting-benicia.github.io',
+  site: 'https://beniciansadoptingbenicia.com',
   base: '/',
   trailingSlash: 'always',
   output: 'static',
