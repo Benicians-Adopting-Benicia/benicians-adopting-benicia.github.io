@@ -1,6 +1,6 @@
 export const site = {
   title: 'Benicians Adopting Benicia',
-  description: 'Enhancing the vibrancy and vitality of our community through visual beautification, local business support, military recognition, and tourism.',
+  description: 'Enhancing the vibrancy and vitality of our community through visual beautification, support for local businesses and schools, military recognition, and tourism.',
   phone_display: '(707) 373-4329',
   phone_tel: 'tel:+17073734329',
   instagram_url: 'https://www.instagram.com/beniciansadoptingbenicia',

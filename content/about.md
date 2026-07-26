@@ -11,7 +11,7 @@ pillars:
     body: A thriving town starts with its people. BAB unites residents, businesses, and volunteers, creating a network of support, pride, and collaboration. By working together on meaningful projects, we foster a deep sense of belonging and ensure Benicia remains a welcoming and vibrant place for all.
   - num: "02"
     title: Supporting Local Business & Schools
-    body: Championing the shops and makers that give Benicia its one-of-a-kind character. Together, we are creating a Benicia High School volunteer club that gives students meaningful opportunities to make a positive impact in our community — working alongside BAB volunteers at cleanups, beautification projects, and special events, as well as creating their own.
+    body: Championing the shops and businesses that give Benicia its one-of-a-kind character. Together, we are creating a Benicia High School volunteer club that gives students meaningful opportunities to make a positive impact in our community — working alongside BAB volunteers at cleanups, beautification projects, and special events, as well as creating their own.
   - num: "03"
     title: Preserving & Enhancing Benicia's Beauty
     body: A beautiful community is a thriving community! BAB organizes volunteer-led beautification projects that keep our parks, public spaces, and local landmarks clean, inviting, and well-maintained. Every effort helps ensure that Benicia remains one of the most picturesque places to live, work, and visit.
