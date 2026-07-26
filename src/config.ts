@@ -10,4 +10,5 @@ export const site = {
   donate_url: 'https://www.livesolanogivesolano.org/give/Benicians-Adopting-Benicia-Fund',
   newsletter_url: 'https://eddy.pro/pdf/5010486',
   banner_form_url: 'https://eddy.pro/pdf/5071076',
+  banner_flyer_path: 'assets/military-banner-flyer.pdf',
 } as const;
