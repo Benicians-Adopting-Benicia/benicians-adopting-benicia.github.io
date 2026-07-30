@@ -1,7 +1,9 @@
 ---
 import { getEntry, render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
 import Default from '../layouts/Default.astro';
 import { site } from '../config';
+import currentIssue from '../assets/images/newsletters/2026-school-partnerships.png';
 
 interface NewsletterFrontmatter {
   title: string;
@@ -16,8 +18,9 @@ const entry = await getEntry('pages', 'newsletter');
 if (!entry) throw new Error('Missing content entry: pages/newsletter');
 const { Content } = await render(entry);
 const frontmatter = entry.data as NewsletterFrontmatter;
+const currentIssueFull = await getImage({ src: currentIssue, format: 'webp', width: 1103 });
 ---
-<Default title={frontmatter.title} description={frontmatter.description}>
+<Default title={frontmatter.title} description={frontmatter.description} lightbox={true}>
 
   <section class="page-header">
     <div class="eyebrow">{frontmatter.eyebrow}</div>
@@ -41,6 +44,12 @@ const frontmatter = entry.data as NewsletterFrontmatter;
       </div>
       <a href={site.newsletter_url} target="_blank" rel="noopener" class="btn btn-red">Read the Latest Issue</a>
     </div>
+  </section>
+
+  <section class="container container-pad container-780 newsletter-issue-section">
+    <a href={currentIssueFull.src} class="glightbox newsletter-issue" data-description={frontmatter.issue_title}>
+      <Image src={currentIssue} alt={`${frontmatter.issue_title} — Benicians Adopting Benicia Community Newsletter`} width={780} format="webp" />
+    </a>
   </section>
 
   <section class="container container-pad container-780 newsletter-content-section">
