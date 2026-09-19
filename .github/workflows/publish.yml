@@ -1,0 +1,155 @@
+name: Publish
+
+# The client replies "publish" on their issue once the preview looks right.
+# That merges the linked pull request, which triggers the GitHub Pages deploy.
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: publish-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ !github.event.issue.pull_request && github.event.comment.user.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const comment = context.payload.comment;
+            const issue_number = issue.number;
+
+            // Accept "publish", "Publish!", "publish it" — but not a sentence
+            // that merely mentions the word.
+            if (!/^\s*publish\b[\s!.]*(it|please|this)?[\s!.]*$/i.test(comment.body || '')) return;
+
+            if (!(issue.labels || []).some(l => l.name === 'site-change')) {
+              return core.info('Not a site-change issue — skipping.');
+            }
+
+            const say = (body) =>
+              github.rest.issues.createComment({ ...context.repo, issue_number, body });
+
+            // Only collaborators with write access may publish to the live site.
+            let authorised = false;
+            try {
+              const res = await github.rest.repos.getCollaboratorPermissionLevel({
+                ...context.repo, username: comment.user.login,
+              });
+              authorised = ['admin', 'write', 'maintain'].includes(res.data.permission);
+            } catch (err) {
+              // See site-change.yml — same fallback, same reason.
+              core.info(`Permission lookup failed (${err.message}); using author_association.`);
+              authorised = ['OWNER', 'MEMBER', 'COLLABORATOR'].includes(comment.author_association);
+            }
+            if (!authorised) {
+              return core.info(`${comment.user.login} is not an authorised collaborator — ignoring.`);
+            }
+
+            const prs = await github.paginate(github.rest.pulls.list, {
+              ...context.repo, state: 'open', per_page: 100,
+            });
+            const linked = new RegExp(`(?:closes|fixes|resolves)\\s+#${issue_number}\\b`, 'i');
+            const pr = prs.find(p => linked.test(p.body || ''));
+
+            if (!pr) {
+              await say("I couldn't find a change waiting to be published for this request. If you were expecting one, let me know what you'd like changed and I'll put a new preview together.");
+              return;
+            }
+
+            // GitHub computes mergeability asynchronously; poll until it settles.
+            let state = null, details = pr;
+            for (let attempt = 0; attempt < 6; attempt++) {
+              const res = await github.rest.pulls.get({ ...context.repo, pull_number: pr.number });
+              details = res.data;
+              state = details.mergeable_state;
+              if (state && state !== 'unknown') break;
+              await new Promise(r => setTimeout(r, 5000));
+            }
+            core.info(`PR #${pr.number} mergeable_state=${state}`);
+
+            if (state === 'dirty') {
+              await say("I can't publish this one automatically — it clashes with another change that went live in the meantime. Matt will need to sort it out. Nothing has changed on the website.");
+              return;
+            }
+
+            if (state === 'behind') {
+              try {
+                await github.rest.pulls.updateBranch({ ...context.repo, pull_number: pr.number });
+                await say("Another change went live since your preview was built, so I'm refreshing yours to match. Give it a couple of minutes, then reply **publish** again.");
+              } catch (err) {
+                await say("I couldn't refresh this change automatically. Matt will need to take a look. Nothing has changed on the website.");
+              }
+              return;
+            }
+
+            if (state !== 'clean') {
+              const checks = await github.rest.checks.listForRef({
+                ...context.repo, ref: details.head.sha,
+              });
+              const bad = checks.data.check_runs
+                .filter(c => ['failure', 'timed_out', 'cancelled'].includes(c.conclusion))
+                .map(c => c.name);
+              const pending = checks.data.check_runs.some(c => c.status !== 'completed');
+
+              if (pending && bad.length === 0) {
+                await say("Almost — the automatic checks on your change are still running. Give it a minute and reply **publish** again.");
+              } else {
+                await say([
+                  "I've held off publishing this one — an automatic safety check didn't pass" +
+                    (bad.length ? ` (${bad.join(', ')})` : '') + '.',
+                  '',
+                  "Matt will need to take a look. Nothing has changed on the website.",
+                ].join('\n'));
+              }
+              return;
+            }
+
+            await github.rest.pulls.merge({
+              ...context.repo,
+              pull_number: pr.number,
+              merge_method: 'squash',
+              commit_title: `${details.title} (#${pr.number})`,
+            });
+
+            // A merge made with GITHUB_TOKEN does not raise a `push` event, so
+            // deploy.yml would never fire on its own. workflow_dispatch is a
+            // documented exception to that rule, so trigger the deploy directly.
+            try {
+              await github.rest.actions.createWorkflowDispatch({
+                ...context.repo,
+                workflow_id: 'deploy.yml',
+                ref: 'main',
+              });
+            } catch (err) {
+              core.error(`Merged, but could not start the deploy: ${err.message}`);
+              await say("Your change has been saved, but I couldn't start the website update automatically. Matt will need to give it a nudge — it won't be long.");
+              return;
+            }
+
+            try {
+              await github.rest.git.deleteRef({
+                ...context.repo, ref: `heads/${details.head.ref}`,
+              });
+            } catch (err) {
+              core.info(`Could not delete merged branch: ${err.message}`);
+            }
+
+            await say([
+              '### Published',
+              '',
+              'Your change is on its way to the real website now. It usually takes a minute or two to appear.',
+              '',
+              '**<https://beniciansadoptingbenicia.com>**',
+              '',
+              "If it still looks the same after a few minutes, try refreshing the page. Thanks!",
+            ].join('\n'));

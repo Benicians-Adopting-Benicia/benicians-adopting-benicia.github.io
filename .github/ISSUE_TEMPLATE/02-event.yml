@@ -1,0 +1,25 @@
+name: Add or update an event
+description: Change what the Events page says about an upcoming gathering.
+title: "Event: "
+labels: ["site-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reminder: individual events live on our Facebook page, and the Events
+        page points people there. Use this form to change the wording on the
+        Events page itself.
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like the Events page to say?
+      placeholder: Add a line letting people know the Cleanup Day is now the second Saturday of each month.
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Is there a Facebook event or link to point to?
+      description: Optional — paste the web address if you have one.
+    validations:
+      required: false

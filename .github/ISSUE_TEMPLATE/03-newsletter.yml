@@ -1,0 +1,28 @@
+name: Post a new newsletter
+description: Put the latest newsletter issue on the website.
+title: "Newsletter: "
+labels: ["site-change"]
+body:
+  - type: input
+    id: issue_title
+    attributes:
+      label: What's this issue called?
+      placeholder: School Partnerships — Benicia High School & BUSD
+    validations:
+      required: true
+  - type: textarea
+    id: image
+    attributes:
+      label: Drag the newsletter image or PDF into this box
+      description: |
+        Click inside the box, then drag the file in — or use the paperclip. Wait
+        for the upload to finish before submitting.
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link to the full newsletter
+      description: Optional — if there's a web address where people can read the whole thing.
+    validations:
+      required: false
