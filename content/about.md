@@ -2,27 +2,27 @@
 title: About Us
 description: Learn about Benicians Adopting Benicia and our mission to enhance community vibrancy in Benicia, CA.
 eyebrow: Who We Are
-subtitle: A community organization dedicated to enhancing the vibrancy and vitality of Benicia, California — working across five key areas to make our city a better place to live, work, and visit.
+subtitle: A volunteer-driven society devoted to Benicia's beauty, business, and civic life — bringing people together to turn community pride into visible, hands-on service across five connected areas of work.
 hero_image: ../src/assets/images/gallery/photo-11.png
 hero_alt: Volunteers at a Benicia field cleanup
 pillars:
   - num: "01"
-    title: Strengthening Community Connections
-    body: A thriving town starts with its people. BAB unites residents, businesses, and volunteers, creating a network of support, pride, and collaboration. By working together on meaningful projects, we foster a deep sense of belonging and ensure Benicia remains a welcoming and vibrant place for all.
+    title: Community Collaboration & Partnerships
+    body: Uniting volunteers, residents, schools, and local businesses into a network of community support, belonging, and fundraising. We build a roster of volunteers matched to their own skills and interests, encourage partners to collaborate rather than duplicate the same services, and develop annual fundraising campaigns that give Benicia's community work consistent, reliable support.
   - num: "02"
-    title: Supporting Local Business & Schools
-    body: Championing the shops and businesses that give Benicia its one-of-a-kind character. Together, we are creating a Benicia High School volunteer club that gives students meaningful opportunities to make a positive impact in our community — working alongside BAB volunteers at cleanups, beautification projects, and special events, as well as creating their own.
+    title: Championing Youth
+    body: Mentoring young people through volunteering and service clubs within our community. We support the Benicia High School Volunteer Club, have adopted Matthew Turner Elementary as a partner school — helping with special events, classroom learning support, and other projects the school identifies — and connect students with meaningful service projects where they can earn volunteer and community service hours.
   - num: "03"
-    title: Preserving & Enhancing Benicia's Beauty
-    body: A beautiful community is a thriving community! BAB organizes volunteer-led beautification projects that keep our parks, public spaces, and local landmarks clean, inviting, and well-maintained. Every effort helps ensure that Benicia remains one of the most picturesque places to live, work, and visit.
+    title: Beautification
+    body: Volunteer-led projects that keep our parks, public spaces, and historic landmarks clean, attractive, and welcoming. We organize cleanups and improvement projects throughout Benicia, partner with the City, local businesses, community organizations, and residents, and seek out the places where volunteer effort can make the most meaningful visual impact.
   - num: "04"
-    title: Honoring Those Who Serve & Protect
-    body: At BAB, we believe in showing gratitude to our heroes — the military members, first responders, and community leaders who dedicate their lives to protecting and uplifting Benicia. Whether through recognition events, banners, community outreach, or heartfelt acts of appreciation, we strive to make sure their sacrifices never go unnoticed.
+    title: Honoring Community
+    body: Recognizing the military members, first responders, and leaders who dedicate their lives to serve and protect our community. We partner with local veterans organizations to identify needs, honor those who have served our country, and support the programs and events — including our Military Banner Program — that make their dedication visible.
   - num: "05"
-    title: Boosting Tourism & Showcasing Our Charm
-    body: Benicia is a hidden gem — full of history, charm, and breathtaking waterfront views — and BAB works to make sure the world knows it! By promoting local events, attractions, and cultural experiences, we help bring in visitors who contribute to the economy, enjoy all Benicia has to offer, and leave with a lasting appreciation for our special town.
+    title: History & Tourism
+    body: Sharing Benicia's history, waterfront, and small-town charm with every visitor who passes through. We partner with local organizations and businesses to create experiences that welcome visitors, help promote our historic sites, waterfront downtown, and unique attractions, and support the projects and events that showcase Benicia's rich heritage while growing local tourism.
 ---
 
-Benicians Adopting Benicia (BAB) is a community-driven organization dedicated to enhancing the vibrancy, beauty, and spirit of our town. Through volunteer efforts, local partnerships, and civic engagement, we work to create a thriving, welcoming, and connected community for residents and visitors alike.
+Benicians Adopting Benicia (BAB) is a community-driven organization dedicated to enhancing the vibrancy, beauty, and spirit of our town. We bring residents, volunteers, businesses, schools, and community partners together, and create meaningful ways for neighbors to serve the place they live.
 
-Whether through beautification projects, economic initiatives, or community events, BAB is committed to making a lasting impact and ensuring Benicia remains a special place to live, work, and explore.
+We recognize the people who serve Benicia, help share the city's history and charm, and — above all — show up, work together, and leave Benicia better than we found it.
