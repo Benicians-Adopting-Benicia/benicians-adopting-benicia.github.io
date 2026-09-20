@@ -20,18 +20,31 @@ The client never opens a pull request, reads a diff, or sees a file path.
 
 ## One-time setup
 
-### 1. Anthropic API key
+### 1. Claude authentication
 
-Create a key in the [Anthropic Console](https://console.anthropic.com/) — use a
-dedicated workspace for this project and **set a monthly spend limit on it**.
-That cap is the real protection against a runaway loop.
+Signed in to your Claude subscription, run `claude setup-token` locally and copy
+the token it prints. Add it to the repo: *Settings → Secrets and variables →
+Actions → New repository secret*, named `CLAUDE_CODE_OAUTH_TOKEN`.
 
-Add it to the repo: *Settings → Secrets and variables → Actions → New repository
-secret*, named `ANTHROPIC_API_KEY`.
+This runs on the subscription rather than metered API billing. At a request or
+two a month it won't be noticeable against your own usage.
 
-Use an API key rather than a `claude setup-token` OAuth token from a personal
-Claude subscription: the API key can be budget-capped, doesn't tie the client's
-automation to your personal rate limits, and doesn't silently expire.
+Two things to know about this token:
+
+- **It lasts about a year, then stops working.** It is access-only and does not
+  refresh itself — which is exactly what makes it usable from CI, where a
+  rotating token would be discarded when the runner is torn down. But it does
+  expire. Put a reminder in your calendar now, a month short of a year out.
+- **Usage counts against your subscription limits**, shared with your own Claude
+  Code work. Negligible at this volume, but if you're already up against a limit
+  when a request lands, the run fails.
+
+Either way the client isn't left hanging — a failed run posts a reply on their
+issue rather than going quiet (see step 6).
+
+If the volume ever grows enough to matter, swap `claude_code_oauth_token` for
+`anthropic_api_key` in `.github/workflows/site-change.yml` and store an
+`ANTHROPIC_API_KEY` secret instead. Nothing else changes.
 
 ### 2. Cloudflare Pages (previews)
 
@@ -79,23 +92,32 @@ Without required checks, `publish` will merge a pull request whose build is
 broken. The publish workflow only merges when GitHub reports the PR as `clean`,
 and that state depends on these checks being marked required.
 
-### 6. Try it
+### 6. Failure alerts (optional, recommended)
+
+Add a repository *variable* — not a secret — named
+`MAINTAINER_GITHUB_USERNAME`, set to your GitHub username. When a run fails, the
+client gets a plain-English reply on their issue saying nothing was changed, and
+you get @-mentioned with a link to the run.
+
+Without it the reply still gets posted, just without the mention, and you'd be
+relying on GitHub's own failed-run email.
+
+### 7. Try it
 
 Open an issue from any template as yourself and walk the whole loop before the
 client ever sees it.
 
 ## Running costs
 
-A typical wording change is a few cents; something involved might reach a dollar
-or two. At this site's rate of change, budget a few dollars a month. `--max-turns
-40` in `site-change.yml` bounds any single request; the workspace spend limit
-bounds the month.
+Nothing per request — this runs on your Claude subscription, so there's no
+metered bill to watch. `--max-turns 40` in `site-change.yml` bounds how much work
+any single request can do.
 
 ## Turning it off
 
 - **Pause it:** *Actions* tab → `Site change request` → *Disable workflow*.
   Issues still get filed, nothing acts on them.
-- **Stop it completely:** delete the `ANTHROPIC_API_KEY` secret.
+- **Stop it completely:** delete the `CLAUDE_CODE_OAUTH_TOKEN` secret.
 - **Stop just the auto-merge:** disable `Publish`. Previews still get built and
   posted; you merge by hand.
 
@@ -103,7 +125,13 @@ Neither affects the live site — `deploy.yml` is independent.
 
 ## When something goes wrong
 
-**Nothing happens after the client files an issue.** Check the issue actually
+**The client gets a "something went wrong on my end" reply.** Most likely the
+token expired — it's good for about a year. Re-run `claude setup-token` and
+update the `CLAUDE_CODE_OAUTH_TOKEN` secret. The linked run will say
+`authentication` or `401` if that's the cause. The other common cause is being
+at your subscription's usage limit, which clears on its own.
+
+**Nothing happens at all after the client files an issue.** Check the issue actually
 carries the `site-change` label, and that the client's collaborator invite was
 accepted — a pending invite gives them no permissions. The `Check request` job
 logs exactly why it declined.
