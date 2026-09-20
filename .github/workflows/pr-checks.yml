@@ -1,0 +1,103 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    name: Protected paths
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Block changes to infrastructure paths
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HAS_OVERRIDE: ${{ contains(github.event.pull_request.labels.*.name, 'allow-infra') }}
+        run: |
+          set -euo pipefail
+
+          if [ "$HAS_OVERRIDE" = "true" ]; then
+            echo "'allow-infra' label present — skipping the protected-path check."
+            exit 0
+          fi
+
+          MERGE_BASE=$(git merge-base "$BASE_SHA" HEAD)
+          CHANGED=$(git diff --name-only "$MERGE_BASE" HEAD)
+
+          echo "Files changed in this PR:"
+          echo "$CHANGED" | sed 's/^/  /'
+
+          # These paths hold the credentials and the build/deploy configuration
+          # that this automation runs on. A site-change request must never
+          # reach them. A maintainer can override with the 'allow-infra' label.
+          BLOCKED=$(echo "$CHANGED" | grep -E '^(\.github/|astro\.config\.mjs$|package\.json$|package-lock\.json$|tsconfig\.json$|CNAME$|public/CNAME$|CLAUDE\.md$)' || true)
+
+          if [ -n "$BLOCKED" ]; then
+            echo
+            echo "::error::This pull request changes protected infrastructure paths."
+            echo "$BLOCKED" | sed 's/^/  blocked: /'
+            echo
+            echo "A site content change should not need these. If this change is"
+            echo "intentional, a maintainer can add the 'allow-infra' label."
+            exit 1
+          fi
+
+          echo
+          echo "No protected paths touched."
+
+      - name: Check committed file sizes
+        # Explicit: the size loop uses process substitution.
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          MERGE_BASE=$(git merge-base "$BASE_SHA" HEAD)
+
+          LIMIT=$((1536 * 1024))   # 1.5 MB hard ceiling
+          WARN=$((600 * 1024))     # 600 KB target from CLAUDE.md
+          FAIL=0
+
+          # NUL-delimited: client-supplied filenames often contain spaces.
+          # Only added/modified files — deletions have no size to check.
+          while IFS= read -r -d '' f; do
+            [ -f "$f" ] || continue
+            case "$f" in
+              *.png|*.jpg|*.jpeg|*.gif|*.webp|*.pdf|*.mp4|*.mov) ;;
+              *) continue ;;
+            esac
+            SIZE=$(stat -c%s "$f")
+            HUMAN=$(numfmt --to=iec-i --suffix=B "$SIZE")
+            if [ "$SIZE" -gt "$LIMIT" ]; then
+              echo "::error file=$f::$f is $HUMAN — over the 1.5MB limit. Resize it before committing."
+              FAIL=1
+            elif [ "$SIZE" -gt "$WARN" ]; then
+              echo "::warning file=$f::$f is $HUMAN — over the 600KB target. Consider resizing."
+            else
+              echo "  ok: $f ($HUMAN)"
+            fi
+          done < <(git diff -z --name-only --diff-filter=AM "$MERGE_BASE" HEAD)
+
+          exit $FAIL
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Also type-checks .astro files and validates every content/*.md file
+      # against the Zod schema in src/content.config.ts.
+      - run: npm run build

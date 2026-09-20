@@ -1,0 +1,35 @@
+name: Something else
+description: Anything that doesn't fit the other options — a new page, a design change, a new link.
+title: "Request: "
+labels: ["site-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe what you'd like in your own words. You don't need to know how
+        it should work — just tell us what you're trying to accomplish.
+  - type: textarea
+    id: request
+    attributes:
+      label: What would you like to change?
+      placeholder: |
+        The Donate button is hard to spot on a phone. Can it be bigger, or
+        higher up the page?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What's this for?
+      description: |
+        Optional, but helpful — knowing the goal often leads to a better answer
+        than the specific change you had in mind.
+    validations:
+      required: false
+  - type: textarea
+    id: files
+    attributes:
+      label: Any files to go with it?
+      description: Optional — drag in pictures, PDFs, or a document with the wording you want.
+    validations:
+      required: false

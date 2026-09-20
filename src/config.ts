@@ -1,6 +1,10 @@
 export const site = {
   title: 'Benicians Adopting Benicia',
+  // Meta description used in <head> for any page that doesn't set its own.
   description: 'Enhancing the vibrancy and vitality of our community through collaboration and partnerships, championing youth, beautification, honoring those who serve, and sharing our history and tourism.',
+  // Visible blurb in the site footer. Intentionally separate from `description`
+  // above — that one is for search engines, this one is read by people.
+  footer_blurb: 'Enhancing the vibrancy and vitality of Benicia, California — through community partnerships, youth mentorship, beautification, honoring those who serve, and our history and tourism.',
   phone_display: '(707) 373-4329',
   phone_tel: 'tel:+17073734329',
   instagram_url: 'https://www.instagram.com/beniciansadoptingbenicia',
@@ -11,4 +15,5 @@ export const site = {
   newsletter_url: 'https://eddy.pro/pdf/5010486',
   banner_form_url: 'https://eddy.pro/pdf/5071076',
   banner_flyer_path: 'assets/military-banner-flyer.pdf',
+  youtube_embed_url: 'https://www.youtube.com/embed/whgm_vqheDI',
 } as const;

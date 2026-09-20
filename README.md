@@ -38,13 +38,34 @@ npm run preview   # preview the production build
 
 ## Editing content
 
-Each page's copy and frontmatter live in `content/*.md` (`about.md`,
-`events.md`, `get-involved.md`, `newsletter.md`). Edit the relevant file and
-the corresponding page in `src/pages/` will pick up the changes — frontmatter
-fields are specific to each page, see `src/content/config.ts` for the schema.
+Each page's copy and frontmatter live in `content/*.md` (`home.md`, `about.md`,
+`events.md`, `get-involved.md`, `newsletter.md`). Edit the relevant file and the
+corresponding page in `src/pages/` will pick up the changes — frontmatter fields
+are specific to each page, see `src/content.config.ts` for the schema.
+
+Site-wide values (phone number, social and donate links, footer blurb, SEO
+description) live in `src/config.ts`.
+
+Every piece of client-editable copy has exactly one home — nothing is duplicated
+between files. The five pillars are defined once in `content/about.md` and
+render in both long form (About) and short form (homepage cards).
 
 ## Deployment
 
-The site builds to static HTML (`astro build`) targeting GitHub Pages, per the
-`site` URL configured in `astro.config.mjs`. There is currently no CI/deploy
-workflow checked into this repo — builds are deployed manually.
+The site builds to static HTML (`astro build`) and deploys to GitHub Pages via
+`.github/workflows/deploy.yml` on every push to `main`. The live site is
+<https://beniciansadoptingbenicia.com>.
+
+Pull requests get a Cloudflare Pages preview build, and are checked by
+`.github/workflows/pr-checks.yml` (protected paths, committed file sizes, and a
+full `npm run build`).
+
+## Client-authored changes
+
+Content changes are requested by the client as GitHub issues and implemented by
+Claude, which opens a pull request and posts a preview link back on the issue.
+Nothing reaches the live site until the client replies `publish`.
+
+- `docs/AI-WORKFLOW.md` — how the pipeline works, and its one-time setup
+- `docs/CLIENT-GUIDE.md` — the non-technical guide written for the client
+- `CLAUDE.md` — the repo conventions that automation follows

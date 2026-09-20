@@ -1,0 +1,46 @@
+name: Change some wording
+description: Fix a typo, reword a sentence, or update text that's out of date.
+title: "Wording change: "
+labels: ["site-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us what you'd like changed and we'll put together a preview for you
+        to look at before anything goes live.
+  - type: dropdown
+    id: page
+    attributes:
+      label: Which page is this on?
+      options:
+        - "Home page"
+        - "About Us"
+        - "Events"
+        - "Get Involved"
+        - "Newsletter"
+        - "The footer (bottom of every page)"
+        - "Not sure / more than one"
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What does it say now?
+      description: Copy and paste the words you want changed, or just describe where they are.
+      placeholder: 'The homepage says "Keeping the spirit of Benicia bright."'
+    validations:
+      required: true
+  - type: textarea
+    id: desired
+    attributes:
+      label: What should it say instead?
+      placeholder: 'Change it to "Keeping Benicia beautiful, together."'
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else we should know?
+      description: Optional.
+    validations:
+      required: false

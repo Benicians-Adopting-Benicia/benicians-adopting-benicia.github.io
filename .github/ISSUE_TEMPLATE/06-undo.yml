@@ -1,0 +1,16 @@
+name: Undo a recent change
+description: Something went live and you'd like it put back the way it was.
+title: "Undo: "
+labels: ["site-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        No problem — every change is saved, so anything can be put back.
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like undone?
+      description: Describe it however you like. "The wording change we did yesterday" is plenty.
+    validations:
+      required: true

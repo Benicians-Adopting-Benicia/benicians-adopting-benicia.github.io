@@ -1,0 +1,36 @@
+name: Add photos to the gallery
+description: Add new pictures to the photo gallery on the homepage.
+title: "Photos: "
+labels: ["site-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Photos go in the "Our Community in Action" gallery on the homepage.
+        Send the biggest versions you have — we'll shrink them for the web.
+  - type: textarea
+    id: photos
+    attributes:
+      label: Drag your photos into this box
+      description: |
+        Click inside the box, then drag the pictures in. You can add several at
+        once. Wait for each upload to finish before submitting.
+    validations:
+      required: true
+  - type: textarea
+    id: captions
+    attributes:
+      label: What's happening in these photos?
+      description: |
+        A short description of each one. This helps people using screen readers,
+        and helps the site show up in search.
+      placeholder: First one is the Memorial Day banner unveiling on First Street.
+    validations:
+      required: false
+  - type: textarea
+    id: remove
+    attributes:
+      label: Any photos you'd like taken down?
+      description: Optional — describe which ones.
+    validations:
+      required: false
