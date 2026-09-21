@@ -7,7 +7,7 @@ export const site = {
   facebook_url: 'https://www.facebook.com/profile.php?id=61566509698418',
   facebook_events_url: 'https://www.facebook.com/profile.php?id=61566509698418&sk=events',
   youtube_url: 'https://www.youtube.com/@BeniciansAdoptingBenicia',
-  donate_url: 'https://www.livesolanogivesolano.org/give/Benicians-Adopting-Benicia-Fund',
+  donate_url: 'https://solanocf.org/Funds/Public/FundView.aspx?f=217',
   newsletter_url: 'https://eddy.pro/pdf/5010486',
   banner_form_url: 'https://eddy.pro/pdf/5071076',
   banner_flyer_path: 'assets/military-banner-flyer.pdf',
