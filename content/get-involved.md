@@ -5,7 +5,7 @@ eyebrow: Lend a Hand
 subtitle: There are many ways to support our community — whether you want to volunteer your time, donate, or honor a loved one through our Military Banner Program.
 donate:
   title: Donate
-  body: Your donation helps fund beautification projects, community events, and our Military Banner Program. Every contribution makes a difference.
+  body: Your donation helps fund beautification projects, community events, and our Military Banner Program. Every contribution makes a difference. Gifts are made through the Benicians Adopting Benicia Fund, held at the Solano Community Foundation.
   cta: Donate Today
 banner:
   title: Military Banner Program
