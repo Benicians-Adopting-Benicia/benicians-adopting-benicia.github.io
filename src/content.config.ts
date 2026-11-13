@@ -21,7 +21,6 @@ const pages = defineCollection({
     donate: z.object({ title: z.string(), body: z.string(), cta: z.string() }).optional(),
     banner: z.object({ title: z.string(), body: z.string(), cta: z.string() }).optional(),
     volunteer: z.object({ title: z.string(), body: z.string() }).optional(),
-    share: z.object({ title: z.string(), body: z.string(), cta: z.string() }).optional(),
   }),
 });
 

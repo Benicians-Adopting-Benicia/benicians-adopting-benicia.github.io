@@ -14,5 +14,4 @@ export const site = {
   newsletter_url: 'https://eddy.pro/pdf/5010486',
   banner_form_url: 'https://eddy.pro/pdf/5071076',
   banner_flyer_path: 'assets/military-banner-flyer.pdf',
-  qr_code_path: 'assets/bab-qr-code.png',
 } as const;

@@ -17,7 +17,6 @@ interface GetInvolvedFrontmatter {
   donate: Section;
   banner: Section;
   volunteer: { title: string; body: string };
-  share: Section;
 }
 
 const entry = await getEntry('pages', 'get-involved');
@@ -66,18 +65,6 @@ const base = import.meta.env.BASE_URL;
           <a href={site.instagram_url} target="_blank" rel="noopener" class="btn btn-outline">@{site.instagram_handle}</a>
           <a href={site.facebook_url} target="_blank" rel="noopener" class="btn btn-outline">Facebook</a>
         </div>
-      </div>
-    </div>
-    <!-- 04 Share -->
-    <div data-r="ledger">
-      <div data-r="ledger-num">04</div>
-      <div>
-        <h2 class="ledger-h2">{frontmatter.share.title}</h2>
-        <p class="ledger-p">{frontmatter.share.body}</p>
-      </div>
-      <div class="ledger-btns qr-download">
-        <img src={`${base}${site.qr_code_path}`} alt="Benicians Adopting Benicia QR code" width="120" height="120" loading="lazy" />
-        <a href={`${base}${site.qr_code_path}`} download="benicians-adopting-benicia-qr-code.png" class="btn btn-outline">{frontmatter.share.cta}</a>
       </div>
     </div>
   </section>
