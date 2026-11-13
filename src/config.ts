@@ -3,7 +3,7 @@ export const site = {
   description: 'Enhancing the vibrancy and vitality of our community through collaboration and partnerships, championing youth, beautification, honoring those who serve, and sharing our history and tourism.',
   phone_display: '(707) 373-4329',
   phone_tel: 'tel:+17073734329',
-  instagram_url: 'https://www.instagram.com/beniciansadoptingbenicia',
+  instagram_url: 'https://www.instagram.com/babforbenicians',
   facebook_url: 'https://www.facebook.com/profile.php?id=61595932088033',
   facebook_events_url: 'https://www.facebook.com/profile.php?id=61595932088033&sk=events',
   youtube_url: 'https://www.youtube.com/@BeniciansAdoptingBenicia',
