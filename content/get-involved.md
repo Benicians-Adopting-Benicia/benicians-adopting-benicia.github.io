@@ -14,4 +14,8 @@ banner:
 volunteer:
   title: Volunteer
   body: We're always looking for enthusiastic community members to help with events and projects. Reach out to get involved.
+share:
+  title: Spread the Word
+  body: Download our QR code to add to flyers, posters, newsletters, or anything else you're sharing about Benicians Adopting Benicia.
+  cta: Download QR Code
 ---
