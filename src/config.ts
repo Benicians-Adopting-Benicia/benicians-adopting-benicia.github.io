@@ -1,11 +1,14 @@
+const instagram_handle = 'babforbenicians';
+
 export const site = {
   title: 'Benicians Adopting Benicia',
   description: 'Enhancing the vibrancy and vitality of our community through collaboration and partnerships, championing youth, beautification, honoring those who serve, and sharing our history and tourism.',
   phone_display: '(707) 373-4329',
   phone_tel: 'tel:+17073734329',
-  instagram_url: 'https://www.instagram.com/beniciansadoptingbenicia',
-  facebook_url: 'https://www.facebook.com/profile.php?id=61566509698418',
-  facebook_events_url: 'https://www.facebook.com/profile.php?id=61566509698418&sk=events',
+  instagram_handle,
+  instagram_url: `https://www.instagram.com/${instagram_handle}`,
+  facebook_url: 'https://www.facebook.com/profile.php?id=61595932088033',
+  facebook_events_url: 'https://www.facebook.com/profile.php?id=61595932088033&sk=events',
   youtube_url: 'https://www.youtube.com/@BeniciansAdoptingBenicia',
   donate_url: 'https://solanocf.org/Funds/Public/FundView.aspx?f=217',
   newsletter_url: 'https://eddy.pro/pdf/5010486',
